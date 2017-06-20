@@ -19,7 +19,8 @@
         }
     }
 
-    & .content {display: flex;
+    & .content {
+        display: flex;
         max-width: 1024px;
         margin: 24px auto;
         justify-content: flex-start;
