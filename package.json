@@ -4,7 +4,7 @@
   "description": "Single page application with React, Redux",
   "main": "index.js",
   "scripts": {
-    "dev-server": "set NODE_ENV=development && webpack-dev-server",
+    "start": "set NODE_ENV=development && webpack-dev-server",
     "build": "set NODE_ENV=production && webpack --progress -p"
   },
   "repository": {
