@@ -1,7 +1,12 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 const style = require('./style.less');
 
-export const Button2 = (props) => (
-    <button className={style.Button}>{props.label}</button>
+let Button2 = (props) => (
+    <button styleName="Button">{props.label}</button>
 )
+
+Button2 = CSSModules(Button2, style);
+
+export {Button2};
