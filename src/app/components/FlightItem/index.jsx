@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const style = require('./style.css');
+const style = require('./style.less');
 
 export const FlightItem = (props) => (
     <div className={style.FlightItem}>

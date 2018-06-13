@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var postcssAssets = require('postcss-assets');
 var postcssNext = require('postcss-cssnext');
+var cssMqpacker = require('css-mqpacker');
+var md5 = require('md5');
 var path = require('path');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
@@ -41,11 +43,35 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                exclude: path.resolve('./src/app'),
-                loaders: [
+                test: /\.less/,
+                include: path.resolve('./src/app'),
+                /*loaders: [
                     'style-loader',
-                    'css-loader'
+                    'css-loader?modules&importLoaders=2&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+                    'postcss-loader',
+                    'less-loader'
+                ]*/
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 2,
+                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            getLocalIdent: (context, localIdentName, localName, options) => {
+                                return localName + md5(context.context);
+                            }
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'less-loader'
+                    }
                 ]
             },
             {
@@ -70,6 +96,7 @@ module.exports = {
         }),
         new webpack.LoaderOptionsPlugin({
             debug: true,
+            context: __dirname,
             options: {
                 postcss: function () {
                     return [
@@ -77,6 +104,7 @@ module.exports = {
                         postcssAssets({
                             relative: true
                         }),
+                        cssMqpacker(),
                     ];
                 },
             }

@@ -2,8 +2,8 @@ import * as React from 'react';
 const {connect} = require('react-redux');
 
 import { getFlights } from '../../redux/modules/avia';
-import { FlightItem } from '../../components';
-const style = require('./style.css');
+import { Button1, Button2, FlightItem } from '../../components';
+const style = require('./style.less');
 
 class Home extends React.Component {
     constructor(props) {
@@ -42,6 +42,10 @@ class Home extends React.Component {
                 </div>
                 <div className={style.content}>
                     {activeFlights.map((flight, index) => <FlightItem key={index} flight={flight}/>)}
+                </div>
+                <div className={style.content}>
+                    <Button1 label="Button 1"/>
+                    <Button2 label="Button 2"/>
                 </div>
             </div>
         );
