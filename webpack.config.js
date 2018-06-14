@@ -1,8 +1,4 @@
-var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var postcssAssets = require('postcss-assets');
-var postcssNext = require('postcss-cssnext');
-var cssMqpacker = require('css-mqpacker');
 var md5 = require('md5');
 var path = require('path');
 
@@ -45,12 +41,6 @@ module.exports = {
             {
                 test: /\.less/,
                 include: path.resolve('./src/app'),
-                /*loaders: [
-                    'style-loader',
-                    'css-loader?modules&importLoaders=2&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-                    'postcss-loader',
-                    'less-loader'
-                ]*/
                 use: [
                     {
                         loader: 'style-loader'
@@ -65,9 +55,6 @@ module.exports = {
                                 return localName + md5(context.context);
                             }
                         }
-                    },
-                    {
-                        loader: 'postcss-loader'
                     },
                     {
                         loader: 'less-loader'
@@ -94,21 +81,6 @@ module.exports = {
             title: 'One Two Trip!',
             template: __dirname + '/index.html'
         }),
-        new webpack.LoaderOptionsPlugin({
-            debug: true,
-            context: __dirname,
-            options: {
-                postcss: function () {
-                    return [
-                        postcssNext(),
-                        postcssAssets({
-                            relative: true
-                        }),
-                        cssMqpacker(),
-                    ];
-                },
-            }
-        })
     ],
 
     devServer: {
