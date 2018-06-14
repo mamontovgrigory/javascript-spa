@@ -50,10 +50,7 @@ module.exports = {
                         options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                            getLocalIdent: (context, localIdentName, localName, options) => {
-                                return localName + md5(context.context);
-                            }
+                            localIdentName: '[local]-[hash:base64:5]',
                         }
                     },
                     {
