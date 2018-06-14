@@ -49,7 +49,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            importLoaders: 2,
+                            importLoaders: 1,
                             localIdentName: '[path][name]__[local]--[hash:base64:5]',
                             getLocalIdent: (context, localIdentName, localName, options) => {
                                 return localName + md5(context.context);
