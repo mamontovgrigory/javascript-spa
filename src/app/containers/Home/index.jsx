@@ -3,7 +3,7 @@ const {connect} = require('react-redux');
 
 import { getFlights } from '../../redux/modules/avia';
 import { Button1, Button2, FlightItem } from '../../components';
-const style = require('./style.less');
+require('./style.less');
 
 class Home extends React.Component {
     constructor(props) {
@@ -33,17 +33,18 @@ class Home extends React.Component {
         const {carriers} = this.props;
         const {activeFlights} = this.state;
         return (
-            <div className={style.Home}>
-                <div className={style.select_wrapper}>
+            <div className="Home">
+                <div className="select_wrapper">
                     <select onChange={this.handleCarriersSelectChange}>
                         <option>Выберите компанию</option>
                         {carriers.map((c, index) => <option key={index} value={c.name}>{c.name}</option>)}
                     </select>
                 </div>
-                <div className={style.content}>
+                <div className="content">
                     {activeFlights.map((flight, index) => <FlightItem key={index} flight={flight}/>)}
                 </div>
-                <div className={style.content}>
+                <div className="content">
+                    <Button1 label="Disabled" disabled/>
                     <Button1 label="Button 1"/>
                     <Button2 label="Button 2"/>
                 </div>

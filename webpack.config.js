@@ -46,12 +46,7 @@ module.exports = {
                         loader: 'style-loader'
                     },
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: '[local]-[hash:base64:5]',
-                        }
+                        loader: 'css-loader'
                     },
                     {
                         loader: 'less-loader'
@@ -75,7 +70,7 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'One Two Trip!',
+            title: 'CSS Modules',
             template: __dirname + '/index.html'
         }),
     ],
