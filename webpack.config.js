@@ -1,5 +1,4 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var md5 = require('md5');
 var path = require('path');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';

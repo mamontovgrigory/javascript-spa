@@ -1,8 +1,16 @@
 import React from 'react';
-import classNames from 'classnames';
+import styled from 'styled-components';
 
-require('./style.less');
+const Button = styled.button`
+  background: ${props => props.disabled ? '#898989' : '#019DEC'};
+  border: none;
+  padding: 15px 30px;
+  border-radius: 4px;
+  color: #FFFFFF;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  margin-right: 10px;
+`;
 
 export const Button1 = (props) => (
-    <button className={classNames({'Button': true, 'Button__disabled': props.disabled})}>{props.label}</button>
+    <Button {...props}>{props.label}</Button>
 )
